@@ -364,8 +364,5 @@ style.textContent = `
         to { transform: rotate(360deg); }
     }
 `;
-<<<<<<< HEAD
 document.head.appendChild(style);
-=======
->>>>>>> c3ceececc6dd903802820ea5ff1882b31db1f327
 
