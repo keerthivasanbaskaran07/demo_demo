@@ -1,0 +1,481 @@
+/* Dark Theme CSS Variables and Styles */
+:root {
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --accent-color: #00E699;
+    --text-primary: #ffffff;
+    --text-muted: #b0b0b0;
+    --card-bg: #1a1a1a;
+    --border-color: #333333;
+}
+
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f7fa;
+    --accent-color: #00b377;
+    --text-primary: #000000;
+    --text-muted: #6c757d;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+}
+
+/* Apply theme variables */
+body {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure all content is visible by default */
+.feature-card,
+.stats-card,
+.post-card,
+.hero-section,
+.container {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Cards */
+.card, .login-card, .register-card, .form-card, .feature-card, .stats-card, .author-card, .comment-section, .post-content {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body p {
+    color: var(--text-primary) !important;
+}
+
+/* Text colors */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.lead {
+    color: var(--text-muted) !important;
+}
+
+/* Forms */
+.form-control, .form-select {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background: var(--bg-secondary) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 230, 153, 0.25) !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.form-label, .form-check-label {
+    color: var(--text-primary) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Input groups */
+.input-group-text {
+    background: var(--accent-color) !important;
+    color: var(--bg-primary) !important;
+    border: none !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--accent-color) !important;
+    color: var(--bg-primary) !important;
+    border: none !important;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #00ff9d !important;
+    color: var(--bg-primary) !important;
+}
+
+.btn-warning {
+    background: var(--accent-color) !important;
+    color: var(--bg-primary) !important;
+    border: none !important;
+}
+
+.btn-warning:hover {
+    background: #00ff9d !important;
+    color: var(--bg-primary) !important;
+}
+
+.btn-outline-primary, .btn-outline-light, .btn-outline-secondary {
+    border-color: var(--accent-color) !important;
+    color: var(--accent-color) !important;
+}
+
+.btn-outline-primary:hover, .btn-outline-light:hover, .btn-outline-secondary:hover {
+    background: var(--accent-color) !important;
+    color: var(--bg-primary) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--bg-secondary) !important;
+    border-bottom: 2px solid var(--accent-color) !important;
+    box-shadow: 0 4px 12px rgba(0, 230, 153, 0.2) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-toggler-icon {
+    color: var(--text-primary) !important;
+}
+
+/* Light theme navbar fix */
+[data-theme="light"] .navbar-nav .nav-link,
+[data-theme="light"] .navbar-brand {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.navbar-brand:hover {
+    color: var(--accent-color) !important;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Icons */
+.icon-circle {
+    background: var(--accent-color) !important;
+    box-shadow: 0 10px 30px rgba(0, 230, 153, 0.4) !important;
+}
+
+.icon-circle i {
+    color: var(--bg-primary) !important;
+}
+
+.feature-icon {
+    background: var(--accent-color) !important;
+    box-shadow: 0 10px 25px rgba(0, 230, 153, 0.4) !important;
+}
+
+.feature-icon i {
+    color: var(--bg-primary) !important;
+}
+
+/* Links */
+a {
+    color: var(--accent-color) !important;
+}
+
+a:hover {
+    color: #00ff9d !important;
+}
+
+/* Badges */
+.badge {
+    background: var(--accent-color) !important;
+    color: var(--bg-primary) !important;
+}
+
+.author-badge {
+    background: var(--accent-color) !important;
+}
+
+/* Alerts */
+.alert {
+    background: var(--card-bg) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-secondary) !important;
+    border-top: 2px solid var(--accent-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.footer a {
+    color: var(--text-muted) !important;
+}
+
+.footer a:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Modals */
+.modal-content {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.modal-header {
+    border-bottom-color: var(--border-color) !important;
+}
+
+.modal-footer {
+    border-top-color: var(--border-color) !important;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+[data-theme="light"] .btn-close {
+    filter: invert(0);
+}
+
+/* Particles.js container is now used instead of static glows */
+/* Particles container setup */
+#particles-js {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#particles-js canvas {
+    pointer-events: auto !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-section {
+        padding: 60px 0 !important;
+    }
+    
+    .display-3 {
+        font-size: 2.5rem !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem !important;
+    }
+    
+    .feature-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem !important;
+    }
+    
+    .hero-section {
+        padding: 40px 0 !important;
+        margin: 15px 0 !important;
+    }
+    
+    .display-3 {
+        font-size: 2rem !important;
+    }
+    
+    .lead {
+        font-size: 1rem !important;
+    }
+    
+    .btn-lg {
+        padding: 10px 20px !important;
+        font-size: 1rem !important;
+    }
+    
+    .post-card {
+        margin-bottom: 15px;
+    }
+    
+    .stats-card {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .display-5 {
+        font-size: 1.8rem !important;
+    }
+    
+    .login-card, .register-card {
+        margin: 10px !important;
+    }
+    
+    .card-body {
+        padding: 20px !important;
+    }
+    
+    .icon-circle {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .icon-circle i {
+        font-size: 2rem !important;
+    }
+    
+    #themeToggle {
+        width: 35px !important;
+        height: 35px !important;
+    }
+}
+
+/* Sections */
+.hero-section {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #0a0a0a 100%) !important;
+    border: 2px solid var(--accent-color) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 20px 60px rgba(0, 230, 153, 0.3) !important;
+}
+
+.hero-section::before,
+.hero-section::after {
+    background: radial-gradient(circle, rgba(0, 230, 153, 0.2), transparent) !important;
+}
+
+.cta-section {
+    background: var(--bg-secondary) !important;
+    border: 2px solid var(--accent-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.cta-section::before,
+.cta-section::after {
+    background: radial-gradient(circle, rgba(0, 230, 153, 0.2), transparent) !important;
+}
+
+.post-header {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #0a0a0a 100%) !important;
+    border: 2px solid var(--accent-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.post-header::before,
+.post-header::after {
+    background: radial-gradient(circle, rgba(0, 230, 153, 0.2), transparent) !important;
+}
+
+/* Editor toolbar */
+.editor-toolbar {
+    background: var(--bg-secondary) !important;
+    border-bottom-color: var(--accent-color) !important;
+}
+
+/* Stats */
+.stats-number {
+    color: var(--accent-color) !important;
+}
+
+/* List groups */
+.list-group-item {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.list-group-item:hover {
+    background: linear-gradient(90deg, rgba(0, 230, 153, 0.1), transparent) !important;
+    border-left-color: var(--accent-color) !important;
+}
+
+/* Comment items */
+.comment-item {
+    border-left-color: var(--accent-color) !important;
+}
+
+/* Image thumbnails */
+.img-thumbnail {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Code blocks */
+code {
+    background: var(--bg-secondary) !important;
+    color: var(--accent-color) !important;
+}
+
+/* Theme toggle button */
+#themeToggle {
+    background: var(--accent-color) !important;
+    color: var(--bg-primary) !important;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+/* Post cards */
+.post-card {
+    background: var(--card-bg) !important;
+    border-left-color: var(--accent-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.post-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 230, 153, 0.3) !important;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+}
+
+.dropdown-item {
+    color: var(--text-primary) !important;
+}
+
+.dropdown-item:hover {
+    background: var(--bg-secondary) !important;
+    color: var(--accent-color) !important;
+}
+
+.dropdown-divider {
+    border-top-color: var(--border-color) !important;
+}
+
+/* Rounded circles */
+.rounded-circle {
+    background: var(--accent-color) !important;
+    color: var(--bg-primary) !important;
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Blog Platform</title>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link href="theme.css" rel="stylesheet" />
+  <link href="login.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="card" role="main" aria-label="Blog Platform Login">
+    <div class="left">
+      <div class="brand">
+        <span class="logo-box" aria-hidden="true"></span>
+        <span>Blog Platform</span>
+      </div>
+
+      <h1>WELCOME TO BLOG PLATFORM</h1>
+
+      <p class="lead">
+        Share your stories and connect with readers around the world.
+        Create, publish, and manage your blog posts with our intuitive platform.
+      </p>
+
+      <div class="preview-wrap" aria-hidden="true">
+        <div class="dashboard">
+          <div class="dash-big">BLOG DASHBOARD - LIVE PREVIEW</div>
+          <div class="dash-card">
+            <div style="font-weight:700">24</div>
+            <div style="font-size:11px;color:var(--text-muted)">ACTIVE POSTS</div>
+          </div>
+          <div class="dash-card">
+            <div style="font-weight:700">1.2K</div>
+            <div style="font-size:11px;color:var(--text-muted)">TOTAL VIEWS</div>
+          </div>
+
+          <div class="dash-card">
+            <div style="font-weight:700">Write</div>
+            <div style="font-size:11px;color:var(--text-muted)">Create new post</div>
+          </div>
+          <div class="dash-card">
+            <div style="font-weight:700">Manage</div>
+            <div style="font-size:11px;color:var(--text-muted)">Edit existing posts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="right-inner">
+        <div style="padding:0 8px 0 0;">
+          <div class="title">Login to Account</div>
+          <div class="subtitle">Enter your credentials to access your account</div>
+
+          <button class="btn-google" aria-label="Sign in with Google">
+            <!-- simple Google icon -->
+            <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path fill="#EA4335"
+                d="M24 12.5v8.9h12.4C35.9 26.4 30.4 30 24 30 17.6 30 12.1 26.5 9.6 21.8l8-6.2C19.9 18.9 21.8 20 24 20c2.4 0 4.5-1.2 5.8-3H24z" />
+              <path fill="#34A853" d="M9.6 21.8 24 34.5c4.8 0 8.8-1.6 11.7-4.2l-9.6-7.2z" />
+              <path fill="#4A90E2"
+                d="M24 12.5c2.9 0 5.5 1 7.6 2.6l5.6-5.6C34.8 6.8 29.8 5 24 5 15.7 5 8.8 10.6 6.1 18.1l9.6 7.7C16.1 23.6 19.7 12.5 24 12.5z" />
+              <path fill="#FBBC05" d="M24 34.5c-5.7 0-10.9-3.1-13.8-7.6L6.1 18.1C8.8 25.6 15.7 31 24 31z" />
+            </svg>
+            <span style="opacity:0.95">Sign in with Google</span>
+          </button>
+
+          <div class="sep">Or</div>
+
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <label for="email">Email</label>
+              <input id="email" class="input" placeholder="joegreen@gmail.com" />
+            </div>
+
+            <div>
+              <label for="pass">Password</label>
+              <div class="password-wrapper">
+                <input id="pass" type="password" class="input" placeholder="Enter your password" />
+                <button type="button" id="togglePass" class="password-toggle" aria-label="Toggle password visibility">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+              <div class="note">Must be atleast 8 characters</div>
+            </div>
+
+            <button class="cta" id="signin-btn">Sign In</button>
+
+            <div class="login">Don't have an account? <a class="link" href="register.html">Sign Up</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const togglePass = document.getElementById('togglePass');
+    const passInput = document.getElementById('pass');
+
+    togglePass.addEventListener('click', function () {
+      const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passInput.setAttribute('type', type);
+      this.classList.toggle('visible');
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="theme.js"></script>
+  <script src="particles-config.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1180 @@
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --accent-color: #00E699;
+  --text-primary: #ffffff;
+  --text-muted: #b0b0b0;
+  --card-width: 1100px;
+  --card-height: 640px;
+  --left-grad-start: #00E699;
+  --left-grad-mid: #00b377;
+  --left-grad-end: #006644;
+  --orange-start: #00E699;
+  --orange-end: #00b377;
+  --panel-bg: #1a1a1a;
+  --input-bg: #1a1a1a;
+  --muted: #b0b0b0;
+  --glass: rgba(255, 255, 255, 0.04);
+  --border: #333333;
+  --right-inner-shadow: none;
+  --card-shadow: none;
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #ffffff;
+  --panel-bg: #ffffff;
+  --text-primary: #333333;
+  --text-muted: #666666;
+  --input-bg: #f8f9fa;
+  --border: #dee2e6;
+  --glass: rgba(0, 0, 0, 0.05);
+  --right-inner-shadow: none;
+  --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  --card-border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* page background */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Space Mono", monospace;
+  /* background: var(--bg-primary); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* the outer card */
+.card {
+  width: var(--card-width);
+  max-width: calc(100% - 48px);
+  height: var(--card-height);
+  display: flex;
+  flex-direction: row;
+  /* Ensure row for desktop */
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  /* Adjusted shadow/border for separation */
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-primary);
+  /* Card base */
+}
+
+/* left gradient panel */
+.left {
+  flex: 1.1;
+  min-width: 0;
+  padding: 64px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  background: linear-gradient(0deg, var(--left-grad-start) 0%, var(--left-grad-mid) 50%, var(--left-grad-end) 90%);
+  position: relative;
+}
+
+/* soft vignette and glow */
+.left::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 60% at 10% 20%, rgba(255, 255, 255, 0.2), transparent 10%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.93);
+  font-weight: 700;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.6px;
+  font-size: 18px;
+  margin-bottom: 8px;
+  z-index: 1;
+  position: relative;
+}
+
+.logo-box {
+  width: 34px;
+  height: 22px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+  display: inline-block;
+}
+
+h1 {
+  font-family: "Orbitron", sans-serif;
+  color: #ffffff;
+  /* Keep left panel text white in both modes */
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.05;
+  max-width: 680px;
+}
+
+p.lead {
+  margin: 0;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* small preview mock */
+.preview-wrap {
+  margin-top: 18px;
+  width: 480px;
+  max-width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* dashboard placeholder grid */
+.dashboard {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.dash-card {
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.dash-big {
+  grid-column: 1/-1;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* right panel */
+.right {
+  width: 420px;
+  background: var(--panel-bg);
+  padding: 56px 40px;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.right-inner {
+  border-radius: 0 18px 18px 0;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  box-shadow: var(--right-inner-shadow);
+  overflow: hidden;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 6px;
+  font-family: "Orbitron", sans-serif;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+/* Google button */
+.btn-google {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 28px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  justify-content: center;
+  width: calc(100% - 28px);
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+}
+
+.btn-google:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sep {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 12px;
+  position: relative;
+}
+
+.sep::before,
+.sep::after {
+  content: "";
+  height: 1px;
+  background: rgba(255, 255, 255, 0.356);
+  position: absolute;
+  top: 50%;
+  width: 40%;
+}
+
+.sep::before {
+  left: 0;
+}
+
+.sep::after {
+  right: 0;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+input,
+.input {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  outline: none;
+  font-size: 13px;
+  width: calc(100% - 28px);
+  transition: background 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: calc(100% - 28px);
+  padding-right: 50px;
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 45px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.password-toggle:hover {
+  color: var(--text-primary);
+}
+
+.password-toggle.visible {
+  color: var(--accent-color);
+}
+
+input:hover,
+.input:hover {
+  background: var(--input-bg);
+  border-color: var(--border);
+}
+
+input:focus,
+.input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px rgba(255, 154, 90, 0.3);
+}
+
+.note {
+  font-size: 12px;
+  color: #9b9b9b;
+  margin-top: 6px;
+}
+
+.cta {
+  margin-top: 12px;
+  background: linear-gradient(180deg, var(--orange-start), var(--orange-end));
+  padding: 12px 18px;
+  border-radius: 28px;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 230, 153, 0.18), inset 0 -3px 10px rgba(0, 0, 0, 0.25);
+  width: calc(100% - 28px);
+  box-sizing: border-box;
+  transition: transform 0.1s ease;
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+.login {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Responsive adjustments - Complete media query system */
+
+/* Extra Small (below 375px) */
+@media (max-width: 374px) {
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .card {
+    padding: 0;
+    margin: 0;
+    border-radius: 8px;
+    max-width: 100%;
+    width: 100%;
+    overflow: visible;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    padding: 12px 10px;
+    gap: 8px;
+    order: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right {
+    padding: 12px 10px;
+    order: 2;
+    width: 100%;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    gap: 5px;
+    margin-bottom: 8px;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    visibility: visible;
+  }
+
+  .logo-box {
+    width: 24px;
+    height: 16px;
+  }
+
+  h1 {
+    font-size: 14px;
+    letter-spacing: 0.4px;
+  }
+
+  p.lead {
+    font-size: 10px;
+  }
+
+  .preview-wrap {
+    height: 80px;
+    margin-top: 6px;
+  }
+
+  .dashboard {
+    padding: 5px;
+    gap: 2px;
+  }
+
+  .dash-card {
+    padding: 4px;
+    font-size: 7px;
+  }
+
+  .dash-big {
+    height: 40px;
+    font-size: 7px;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .subtitle {
+    font-size: 9px;
+  }
+
+  .btn-google {
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .btn-google svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .sep {
+    font-size: 9px;
+  }
+
+  label {
+    font-size: 9px;
+  }
+
+  input,
+  .input {
+    padding: 7px 9px;
+    font-size: 10px;
+    width: calc(100% - 18px);
+  }
+
+  .password-wrapper input {
+    width: calc(100% - 18px);
+    padding-left: 32px;
+  }
+
+  .password-toggle {
+    left: 8px;
+    right: auto;
+    padding: 2px;
+  }
+
+  .password-toggle svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .cta {
+    padding: 7px 9px;
+    font-size: 11px;
+    width: calc(100% - 18px);
+  }
+
+  .login {
+    font-size: 9px;
+  }
+}
+
+/* Small (375px to 424px) */
+@media (min-width: 375px) and (max-width: 424px) {
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .card {
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 100%;
+    overflow: visible;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    padding: 14px 12px;
+    gap: 8px;
+    order: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right {
+    padding: 14px 12px;
+    order: 2;
+    width: 100%;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 6px;
+    margin-bottom: 6px;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    visibility: visible;
+  }
+
+  .logo-box {
+    width: 26px;
+    height: 17px;
+  }
+
+  h1 {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  p.lead {
+    font-size: 11px;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  .preview-wrap {
+    height: 85px;
+    margin-top: 8px;
+  }
+
+  .dashboard {
+    padding: 6px;
+    gap: 3px;
+  }
+
+  .dash-card {
+    padding: 5px;
+    font-size: 8px;
+  }
+
+  .dash-big {
+    height: 45px;
+    font-size: 8px;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+  }
+
+  .btn-google {
+    padding: 8px 11px;
+    font-size: 11px;
+  }
+
+  .btn-google svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .sep {
+    font-size: 10px;
+  }
+
+  label {
+    font-size: 10px;
+  }
+
+  input,
+  .input {
+    padding: 8px 10px;
+    font-size: 11px;
+    width: calc(100% - 20px);
+  }
+
+  .password-wrapper input {
+    width: calc(100% - 20px);
+    padding-left: 33px;
+  }
+
+  .password-toggle {
+    left: 9px;
+    right: auto;
+    padding: 2px;
+  }
+
+  .password-toggle svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .cta {
+    padding: 8px 11px;
+    font-size: 12px;
+    width: calc(100% - 20px);
+  }
+
+  .login {
+    font-size: 10px;
+  }
+}
+
+/* Medium (425px to 599px) */
+@media (min-width: 425px) and (max-width: 599px) {
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .card {
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 100%;
+    overflow: visible;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    padding: 16px 14px;
+    gap: 10px;
+    order: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right {
+    padding: 16px 14px;
+    order: 2;
+    width: 100%;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    gap: 8px;
+    margin-bottom: 6px;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    visibility: visible;
+  }
+
+  .logo-box {
+    width: 28px;
+    height: 18px;
+  }
+
+  h1 {
+    font-size: 18px;
+    letter-spacing: 0.7px;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  p.lead {
+    font-size: 12px;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  .preview-wrap {
+    height: 100px;
+    margin-top: 10px;
+  }
+
+  .dashboard {
+    padding: 7px;
+    gap: 3px;
+  }
+
+  .dash-card {
+    padding: 5px;
+    font-size: 8px;
+  }
+
+  .dash-big {
+    height: 50px;
+    font-size: 8px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+  }
+
+  .btn-google {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .btn-google svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .sep {
+    font-size: 11px;
+  }
+
+  label {
+    font-size: 11px;
+  }
+
+  input,
+  .input {
+    padding: 9px 11px;
+    font-size: 12px;
+    width: calc(100% - 22px);
+  }
+
+  .password-wrapper input {
+    width: calc(100% - 22px);
+    padding-left: 36px;
+  }
+
+  .password-toggle {
+    left: 10px;
+    right: auto;
+    padding: 2px;
+  }
+
+  .password-toggle svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cta {
+    padding: 9px 12px;
+    font-size: 13px;
+    width: calc(100% - 22px);
+  }
+
+  .login {
+    font-size: 11px;
+  }
+}
+
+/* Large Mobile / Small Tablet (600px to 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .card {
+    padding: 0;
+    margin: 0;
+    border-radius: 12px;
+    max-width: 100%;
+    width: 100%;
+    overflow: visible;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    padding: 20px 16px;
+    gap: 12px;
+    order: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right {
+    padding: 20px 16px;
+    order: 2;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .right-inner {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 8px;
+    margin-bottom: 8px;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    visibility: visible;
+  }
+
+  .logo-box {
+    width: 30px;
+    height: 19px;
+  }
+
+  h1 {
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    margin: 0;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  p.lead {
+    font-size: 13px;
+    margin: 0;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  .preview-wrap {
+    width: 100%;
+    height: 120px;
+    margin-top: 12px;
+  }
+
+  .dashboard {
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .dash-card {
+    padding: 6px;
+    font-size: 9px;
+  }
+
+  .dash-big {
+    height: 60px;
+    font-size: 9px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .btn-google {
+    padding: 10px 13px;
+    font-size: 13px;
+    width: calc(100% - 24px);
+  }
+
+  .btn-google svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .sep {
+    font-size: 12px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  input,
+  .input {
+    padding: 10px 12px;
+    font-size: 13px;
+    width: calc(100% - 24px);
+  }
+
+  .password-wrapper input {
+    width: calc(100% - 24px);
+    padding-left: 40px;
+  }
+
+  .password-toggle {
+    left: 12px;
+    right: auto;
+    padding: 4px;
+  }
+
+  .password-toggle svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .cta {
+    padding: 10px 13px;
+    font-size: 14px;
+    width: calc(100% - 24px);
+  }
+
+  .login {
+    font-size: 12px;
+  }
+}
+
+/* Tablet (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .card {
+    max-width: calc(100% - 32px);
+    margin: 16px auto;
+    border-radius: 14px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .left {
+    padding: 32px 28px;
+    gap: 16px;
+    width: 100%;
+    order: 1;
+  }
+
+  .right {
+    width: 100%;
+    order: 2;
+    border-radius: 0;
+    padding: 28px 24px;
+  }
+
+  .right-inner {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .brand {
+    font-size: 18px;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .logo-box {
+    width: 32px;
+    height: 21px;
+  }
+
+  h1 {
+    font-size: 26px;
+    letter-spacing: 1.2px;
+    margin: 0;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  p.lead {
+    font-size: 14px;
+    margin: 0;
+    visibility: visible;
+    display: block;
+    overflow: visible;
+  }
+
+  .preview-wrap {
+    width: 100%;
+    height: 160px;
+    margin-top: 16px;
+  }
+
+  .dashboard {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .dash-card {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .dash-big {
+    height: 80px;
+    font-size: 11px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .btn-google {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .btn-google svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  input,
+  .input {
+    padding: 10px 12px;
+    font-size: 13px;
+    width: calc(100% - 24px);
+  }
+
+  .password-wrapper input {
+    width: calc(100% - 24px);
+    padding-left: 40px;
+  }
+
+  .password-toggle {
+    left: 12px;
+    right: auto;
+    padding: 4px;
+  }
+
+  .password-toggle svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .cta {
+    padding: 10px 14px;
+    font-size: 14px;
+    width: calc(100% - 24px);
+  }
+}
+
+/* Desktop Large (1024px and above) */
+@media (min-width: 1024px) {
+  .card {
+    width: var(--card-width);
+    max-width: calc(100% - 48px);
+    height: var(--card-height);
+    flex-direction: row;
+  }
+
+  .left {
+    flex: 1.1;
+    padding: 64px 72px;
+    gap: 28px;
+  }
+
+  .right {
+    width: 420px;
+    padding: 56px 40px;
+    border-radius: 0 20px 20px 0;
+  }
+
+  .right-inner {
+    border-radius: 0 18px 18px 0;
+  }
+
+  .brand {
+    font-size: 18px;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .logo-box {
+    width: 34px;
+    height: 22px;
+  }
+
+  h1 {
+    font-size: 34px;
+    letter-spacing: 2px;
+  }
+
+  p.lead {
+    font-size: 14px;
+  }
+
+  .preview-wrap {
+    width: 480px;
+    height: 200px;
+    margin-top: 18px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+}
+
+/* small finishing touches */
+.muted-quiet {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+}
+
+a.link {
+  color: #ffb58a;
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 13px;
+}
